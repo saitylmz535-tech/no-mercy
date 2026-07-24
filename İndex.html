@@ -7,253 +7,163 @@
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-    color:white;
-    overflow-x:hidden;
-    background:#000;
+background:#000;
+color:#fff;
+overflow:hidden;
 }
 
 #bgVideo{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:-2;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
 }
 
 body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.60);
-    z-index:-1;
+content:"";
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+z-index:-1;
 }
 
 header{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
 }
 
 h1{
-    font-size:90px;
-    color:#ff0000;
-    text-shadow:0 0 20px red,0 0 40px red;
-    animation:glow 2s infinite alternate;
+font-size:90px;
+color:#ff0000;
+text-shadow:0 0 20px red,0 0 60px red;
+animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-    from{
-        text-shadow:0 0 15px red;
-    }
-    to{
-        text-shadow:0 0 40px red,0 0 70px darkred;
-    }
+from{transform:scale(.98);}
+to{transform:scale(1.02);}
 }
 
-header p{
-    margin-top:20px;
-    font-size:25px;
+p{
+font-size:24px;
+margin:20px 0;
 }
 
-.discord-button{
-    margin-top:40px;
-    background:#ff0000;
-    color:white;
-    padding:15px 45px;
-    border-radius:40px;
-    text-decoration:none;
-    font-size:20px;
-    transition:.3s;
+.discord{
+padding:16px 45px;
+background:#ff0000;
+color:white;
+text-decoration:none;
+border-radius:40px;
+font-size:20px;
+transition:.3s;
 }
 
-.discord-button:hover{
-    background:white;
-    color:red;
+.discord:hover{
+background:white;
+color:red;
 }
 
-section{
-    padding:80px 20px;
-    text-align:center;
-}
-
-h2{
-    color:red;
-    font-size:42px;
-    margin-bottom:30px;
-}
-
-.card{
-    max-width:850px;
-    margin:auto;
-    background:rgba(20,20,20,.85);
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 0 20px rgba(255,0,0,.4);
-    font-size:19px;
-    line-height:1.8;
-}
-
-footer{
-    padding:20px;
-    text-align:center;
-    background:#111;
-    color:#888;
-}
-
-@media(max-width:768px){
-    h1{
-        font-size:55px;
-    }
-
-    header p{
-        font-size:18px;
-    }
-}#intro{
-    position:fixed;
-    inset:0;
-    background:#000;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    z-index:9999;
-    transition:opacity 1s ease,visibility 1s ease;
+#intro{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+transition:1s;
 }
 
 #intro.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.intro-title{
-    font-size:90px;
-    color:red;
-    text-shadow:0 0 20px red,0 0 50px darkred;
-    animation:introGlow 1.2s infinite alternate;
-}
-
-.intro-text{
-    margin-top:20px;
-    font-size:22px;
-    color:#ddd;
-    letter-spacing:4px;
-    opacity:0;
-    animation:textShow 1s forwards;
-    animation-delay:1s;
+opacity:0;
+visibility:hidden;
 }
 
 .loader{
-    width:200px;
-    height:5px;
-    background:#222;
-    border-radius:20px;
-    margin-top:30px;
-    overflow:hidden;
+width:220px;
+height:5px;
+background:#222;
+margin-top:30px;
+overflow:hidden;
+border-radius:20px;
 }
 
 .loader::before{
-    content:"";
-    display:block;
-    width:0;
-    height:100%;
-    background:red;
-    animation:loading 3s forwards;
+content:"";
+display:block;
+height:100%;
+background:red;
+animation:load 3s forwards;
 }
 
-@keyframes introGlow{
-    from{
-        transform:scale(.95);
-        text-shadow:0 0 10px red;
-    }
-    to{
-        transform:scale(1.05);
-        text-shadow:0 0 50px red;
-    }
-}
-
-@keyframes textShow{
-    to{
-        opacity:1;
-    }
-}
-
-@keyframes loading{
-    from{width:0;}
-    to{width:100%;}
+@keyframes load{
+from{width:0;}
+to{width:100%;}
 }
 </style>
 </head>
 
 <body>
+
 <div id="intro">
-    <h1 class="intro-title">NO MERCY</h1>
-    <p class="intro-text">Sadakat • Güç • Saygı</p>
-    <div class="loader"></div>
+<h1>NO MERCY</h1>
+<p>Sadakat • Güç • Saygı</p>
+<div class="loader"></div>
 </div>
+
 <video autoplay muted loop playsinline id="bgVideo">
-    <source src="background.mp4" type="video/mp4">
+<source src="background.mp4" type="video/mp4">
 </video>
 
 <header>
-    <h1>NO MERCY</h1>
+<h1>NO MERCY</h1>
+<p>Sadakat • Güç • Saygı</p>
 
-    <p>Sadakat • Güç • Saygı</p>
+<a class="discord"
+href="https://discord.gg/EeUYJevZ4Z"
+target="_blank">
+Discord'a Katıl
+</a>
 
-    <a class="discord-button"
-       href="https://discord.gg/EeUYJevZ4Z"
-       target="_blank">
-       Discord'a Katıl
-    </a>
 </header>
 
-<section>
-
-<h2>Aile Hikayesi</h2>
-
-<div class="card">
-No Mercy; sadakat, güç ve saygı üzerine kurulmuş bir FiveM ailesidir.
-Birlikte yükselir, birlikte savaşır, birlikte kazanırız.
-Ailemize katılan herkes kardeşimizdir.
-</div>
-
-</section>
-
-<footer>
-© 2026 NO MERCY
-</footer>
-<script>
-window.addEventListener("load", function () {
-    setTimeout(function () {
-        document.getElementById("intro").classList.add("hide");
-    }, 3000);
-});
-</script><audio id="bgMusic" autoplay loop>
-    <source src="music.mp3" type="audio/mpeg"><script>
-window.addEventListener("load", function () {
-    setTimeout(function () {
-        document.getElementById("intro").classList.add("hide");
-    }, 3000);
-
-    const music = document.getElementById("bgMusic");
-    music.play().catch(() => {
-        document.addEventListener("click", () => {
-            music.play();
-        }, { once: true });
-    });
-});
-</script>
+<audio id="music" autoplay loop>
+<source src="music.mp3" type="audio/mpeg">
 </audio>
+
+<script>
+window.onload=function(){
+
+setTimeout(function(){
+document.getElementById("intro").classList.add("hide");
+},3000);
+
+const music=document.getElementById("music");
+
+music.play().catch(()=>{
+document.addEventListener("click",()=>{
+music.play();
+},{once:true});
+});
+
+};
+</script>
+
 </body>
 </html>
